@@ -1,8 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Checkbox from '@components/Checkbox';
+
 const App: React.FC = () => {
-  return <MainWrapper>Hello Bucket</MainWrapper>;
+  return (
+    <MainWrapper>
+      Hello Bucket
+      <Checkbox />
+    </MainWrapper>
+  );
 };
 
 export default App;
