@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Checkbox from '@components/Checkbox';
+import MainRouter from '@router/MainRouter';
 
 const App: React.FC = () => {
   return (
     <MainWrapper>
-      Hello Bucket
-      <Checkbox />
+      <MainRouter />
     </MainWrapper>
   );
 };
