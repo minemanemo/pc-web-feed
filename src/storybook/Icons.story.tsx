@@ -1,5 +1,13 @@
 import React from 'react';
 
+import {
+  CheckBoxIcon,
+  CheckBoxOutlineIcon,
+  ScrabEnableIcon,
+  ScrabDisableIcon,
+  BasicProfile,
+} from '@components/Icon';
+
 export default {
   title: 'Icons',
 };
@@ -7,44 +15,39 @@ export default {
 export const NonProfile: React.ReactNode = () => {
   return (
     <div>
-      storybook setting
-      <div>hello</div>
+      <BasicProfile />
     </div>
   );
 };
 
-export const NonImage: React.ReactNode = () => {
+export const EnableScrap: React.ReactNode = () => {
   return (
     <div>
-      storybook setting
-      <div>hello</div>
+      <ScrabEnableIcon />
     </div>
   );
 };
 
-export const Scrap: React.ReactNode = () => {
+export const DisableScrap: React.ReactNode = () => {
   return (
     <div>
-      storybook setting
-      <div>hello</div>
+      <ScrabDisableIcon />
     </div>
   );
 };
 
-export const Check: React.ReactNode = () => {
+export const CheckBox: React.ReactNode = () => {
   return (
     <div>
-      storybook setting
-      <div>hello</div>
+      <CheckBoxIcon />
     </div>
   );
 };
 
-export const RoundSquare: React.ReactNode = () => {
+export const CheckBoxOutLine: React.ReactNode = () => {
   return (
     <div>
-      storybook setting
-      <div>hello</div>
+      <CheckBoxOutlineIcon />
     </div>
   );
 };
