@@ -1,5 +1,6 @@
 import { createBrowserHistory } from 'history';
-import { LocationState } from './history.d';
+
+import { LocationState } from '@type/history';
 
 const history = createBrowserHistory<LocationState>();
 

@@ -18,7 +18,7 @@ module.exports = {
       '@router': 'router',
       '@store': 'store',
       '@styles': 'styles',
-      '@types': 'types',
+      '@type': 'type',
     };
 
     return config;
