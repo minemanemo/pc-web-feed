@@ -1,32 +1,42 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components';
 
-import { CheckBoxIcon, CheckBoxOutlineIcon } from '@components/Icon';
+import CheckBox from './Checkbox';
 
-interface CheckBoxProps {
+interface LabelCheckBoxProps {
   check: boolean;
+  label: string;
   onClick?: (value: boolean) => void;
 }
 
-const CheckBox: React.FC<CheckBoxProps> = ({
+const LabelCheckBox: React.FC<LabelCheckBoxProps> = ({
   check = false,
+  label = '',
   onClick = (value: boolean) => console.log(value),
-}: CheckBoxProps) => {
+}: LabelCheckBoxProps) => {
   const handleClick = useCallback(() => {
     onClick(!check);
   }, [check, onClick]);
 
   return (
-    <Wrapper onClick={handleClick}>
-      {check ? <CheckBoxIcon /> : <CheckBoxOutlineIcon />}
+    <Wrapper>
+      <CheckBox check={check} onClick={onClick} />
+      <Label onClick={handleClick}>{label}</Label>
     </Wrapper>
   );
 };
 
-export default CheckBox;
+export default LabelCheckBox;
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+
+  & > *:first-child {
+    margin-right: 6px;
+  }
+`;
+
+const Label = styled.span`
   cursor: pointer;
 `;
