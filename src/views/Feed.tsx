@@ -80,8 +80,8 @@ const Content = styled.div`
 `;
 
 const CardBoard = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 270px);
   justify-content: space-between;
 
   & > * {
