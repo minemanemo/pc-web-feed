@@ -19,6 +19,7 @@ module.exports = {
       '@store': 'store',
       '@styles': 'styles',
       '@type': 'type',
+      '@views': 'views',
     };
 
     return config;
