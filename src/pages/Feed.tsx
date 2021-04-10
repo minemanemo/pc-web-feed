@@ -18,9 +18,11 @@ const Feed: React.FC = () => {
   const handleScrollDown = () => dispatch(fetchFeeds());
   const handleScrab = (id: number, value: boolean) =>
     dispatch(setScrab({ id, value }));
+
   useEffect(() => {
     handleScrollDown();
     dispatch(loadScrab());
+
     return () => {
       dispatch(clearFeeds());
     };

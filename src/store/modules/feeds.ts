@@ -1,3 +1,4 @@
+import produce from 'immer';
 import { handleActions, createAction } from 'redux-actions';
 import { Feeds } from '@type/store';
 
@@ -33,20 +34,31 @@ const initialState: Feeds = {
 
 const feeds = handleActions<Feeds>(
   {
-    [SET_LOADING]: (state, action) => ({
-      ...state,
-      loading: action.payload.loading,
-    }),
-    [APPEND_FEEDS]: (state, action) => ({
-      ...state,
-      items: [...state.items, ...action.payload.items],
-    }),
-    [NEXT_INDEX]: (state) => ({ ...state, lastIndex: state.lastIndex + 1 }),
-    [END_FEED]: (state) => ({ ...state, lastIndex: 0 }),
-    [UPDATE_SCRAB]: (state, action) => ({
-      ...state,
-      scrab: action.payload.scrab,
-    }),
+    [SET_LOADING]: (state, action) => {
+      return produce(state, (draft) => {
+        draft.loading = action.payload.loading;
+      });
+    },
+    [APPEND_FEEDS]: (state, action) => {
+      return produce(state, (draft) => {
+        draft.items = [...state.items, ...action.payload.items];
+      });
+    },
+    [NEXT_INDEX]: (state) => {
+      return produce(state, (draft) => {
+        draft.lastIndex = state.lastIndex + 1;
+      });
+    },
+    [END_FEED]: (state) => {
+      return produce(state, (draft) => {
+        draft.lastIndex = 0;
+      });
+    },
+    [UPDATE_SCRAB]: (state, action) => {
+      return produce(state, (draft) => {
+        draft.scrab = action.payload.scrab;
+      });
+    },
     [CLEAR_FEEDS]: () => initialState,
   },
   initialState,
