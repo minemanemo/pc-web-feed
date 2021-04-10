@@ -4,15 +4,20 @@ import styled from 'styled-components';
 import { LabelCheckBox } from '@components/Checkbox';
 import { ContentCard } from '@components/Content';
 import { FeedData } from '@type/feed';
+import { Filter } from '@type/localStorage';
 
 interface FeedViewProps {
   feeds: FeedData[];
+  scrab: Filter;
   onScrollDown: () => void;
+  onClickScrab: (id: number, scrab: boolean) => void;
 }
 
 const FeedView: React.FC<FeedViewProps> = ({
   feeds = [],
+  scrab = {},
   onScrollDown = () => {},
+  onClickScrab = (id, value) => console.log(id, value),
 }: FeedViewProps) => {
   const [check, setCheck] = useState(false);
 
@@ -49,8 +54,8 @@ const FeedView: React.FC<FeedViewProps> = ({
               nickname={feed.nickname}
               imageUrl={feed.image_url}
               profileImageUrl={feed.profile_image_url}
-              scrab={false}
-              onClickScrab={(value) => console.log(value)}
+              scrab={scrab[feed.id] || false}
+              onClickScrab={(value) => onClickScrab(feed.id, value)}
             />
           ))}
         </CardBoard>
