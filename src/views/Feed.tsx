@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
+import _ from 'lodash';
 
 import { LabelCheckBox } from '@components/Checkbox';
 import { ContentCard } from '@components/Content';
@@ -21,6 +22,11 @@ const FeedView: React.FC<FeedViewProps> = ({
 }: FeedViewProps) => {
   const [check, setCheck] = useState(false);
 
+  const filterFeeds = useMemo(() => {
+    if (!check) return feeds;
+    return feeds.filter((feed) => scrab[feed.id]);
+  }, [check, feeds, scrab]);
+
   const handleClick = (value: boolean) => {
     setCheck(value);
   };
@@ -37,7 +43,12 @@ const FeedView: React.FC<FeedViewProps> = ({
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  });
+  }, []);
+
+  useEffect(() => {
+    if (!check) return;
+    if (filterFeeds.length !== _.keys(scrab).length) handleScroll();
+  }, [filterFeeds, scrab]);
 
   return (
     <Wrapper>
@@ -48,7 +59,7 @@ const FeedView: React.FC<FeedViewProps> = ({
           onClick={handleClick}
         />
         <CardBoard>
-          {feeds.map((feed) => (
+          {filterFeeds.map((feed) => (
             <ContentCard
               key={feed.id}
               nickname={feed.nickname}
