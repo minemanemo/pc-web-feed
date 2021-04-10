@@ -16,10 +16,8 @@ const Feed: React.FC = () => {
   const { feeds } = useSelector((store: Store) => store, shallowEqual);
 
   const handleScrollDown = () => dispatch(fetchFeeds());
-  const handleScrab = (id: number, value: boolean) => {
+  const handleScrab = (id: number, value: boolean) =>
     dispatch(setScrab({ id, value }));
-  };
-
   useEffect(() => {
     handleScrollDown();
     dispatch(loadScrab());
@@ -30,6 +28,7 @@ const Feed: React.FC = () => {
 
   return (
     <View
+      loading={feeds.loading}
       feeds={feeds.items}
       scrab={feeds.scrab}
       onScrollDown={handleScrollDown}

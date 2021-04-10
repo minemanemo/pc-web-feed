@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import _ from 'lodash';
 
@@ -8,6 +8,7 @@ import { FeedData } from '@type/feed';
 import { Filter } from '@type/localStorage';
 
 interface FeedViewProps {
+  loading: boolean;
   feeds: FeedData[];
   scrab: Filter;
   onScrollDown: () => void;
@@ -15,6 +16,7 @@ interface FeedViewProps {
 }
 
 const FeedView: React.FC<FeedViewProps> = ({
+  loading = false,
   feeds = [],
   scrab = {},
   onScrollDown = () => {},
@@ -27,13 +29,11 @@ const FeedView: React.FC<FeedViewProps> = ({
     return feeds.filter((feed) => scrab[feed.id]);
   }, [check, feeds, scrab]);
 
-  const handleClick = (value: boolean) => {
-    setCheck(value);
-  };
+  const handleClick = useCallback((value: boolean) => setCheck(value), [check]);
 
   const handleScroll = () => {
     const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
-    if (scrollTop + clientHeight >= scrollHeight) {
+    if (scrollTop + clientHeight >= scrollHeight && !loading) {
       onScrollDown();
     }
   };
@@ -47,8 +47,9 @@ const FeedView: React.FC<FeedViewProps> = ({
 
   useEffect(() => {
     if (!check) return;
-    if (filterFeeds.length !== _.keys(scrab).length) handleScroll();
-  }, [filterFeeds, scrab]);
+    if (loading) return;
+    if (filterFeeds.length !== _.keys(scrab).length) onScrollDown();
+  }, [check, filterFeeds, loading, scrab]);
 
   return (
     <Wrapper>

@@ -8,6 +8,7 @@ import {
   nextIndex,
   endFeed,
   updateScrab,
+  setLoading,
 } from '@store/modules/feeds';
 
 import { getNextFeeds } from '@libs/api';
@@ -17,11 +18,14 @@ import { SetScrabAction, Store } from '@type/store';
 import { Filter } from '@type/localStorage';
 
 function* fetchFeeds() {
-  const index: number = yield select((store: Store) => store.feeds.lastIndex);
-
+  const { lastIndex: index, loading } = yield select(
+    (store: Store) => store.feeds,
+  );
+  if (loading) return;
   if (index < 1) return;
 
   try {
+    yield put(setLoading({ loading: true }));
     const { data: items }: FeedsResponse = yield getNextFeeds(index);
 
     if (items.length <= 0) throw new Error('data is null');
@@ -30,6 +34,8 @@ function* fetchFeeds() {
     yield put(nextIndex());
   } catch (e) {
     yield put(endFeed());
+  } finally {
+    yield put(setLoading({ loading: false }));
   }
 }
 

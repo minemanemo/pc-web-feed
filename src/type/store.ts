@@ -14,6 +14,7 @@ export interface Feeds {
   lastIndex: number;
   items: FeedData[];
   scrab: Filter;
+  loading: boolean;
 }
 
 export type SetScrabAction = Action<{ id: number; value: boolean }>;

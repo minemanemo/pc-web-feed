@@ -2,6 +2,7 @@ import { handleActions, createAction } from 'redux-actions';
 import { Feeds } from '@type/store';
 
 // Action Type
+export const SET_LOADING = 'feeds/SET_LOADING';
 export const FETCH_FEEDS = 'feeds/FETCH_FEEDS';
 export const APPEND_FEEDS = 'feeds/APPEND_FEED';
 export const NEXT_INDEX = 'feeds/NEXT_INDEX';
@@ -12,6 +13,7 @@ export const UPDATE_SCRAB = 'feeds/UPDATE_SCRAB';
 export const LOAD_SCRAB = 'feeds/LOAD_SCRAB';
 
 // Action Creator function
+export const setLoading = createAction(SET_LOADING);
 export const fetchFeeds = createAction(FETCH_FEEDS);
 export const appendFeeds = createAction(APPEND_FEEDS);
 export const nextIndex = createAction(NEXT_INDEX);
@@ -26,10 +28,15 @@ const initialState: Feeds = {
   lastIndex: 1,
   items: [],
   scrab: {},
+  loading: false,
 };
 
 const feeds = handleActions<Feeds>(
   {
+    [SET_LOADING]: (state, action) => ({
+      ...state,
+      loading: action.payload.loading,
+    }),
     [APPEND_FEEDS]: (state, action) => ({
       ...state,
       items: [...state.items, ...action.payload.items],
