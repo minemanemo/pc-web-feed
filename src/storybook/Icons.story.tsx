@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import {
   CheckBoxIcon,
@@ -7,6 +8,7 @@ import {
   ScrabDisableIcon,
   BasicProfile,
 } from '@components/Icon';
+import theme from '@styles/theme';
 
 export default {
   title: 'Icons',
@@ -14,40 +16,40 @@ export default {
 
 export const NonProfile: React.ReactNode = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <BasicProfile />
-    </div>
+    </ThemeProvider>
   );
 };
 
 export const EnableScrap: React.ReactNode = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <ScrabEnableIcon />
-    </div>
+    </ThemeProvider>
   );
 };
 
 export const DisableScrap: React.ReactNode = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <ScrabDisableIcon />
-    </div>
+    </ThemeProvider>
   );
 };
 
 export const CheckBox: React.ReactNode = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <CheckBoxIcon />
-    </div>
+    </ThemeProvider>
   );
 };
 
 export const CheckBoxOutLine: React.ReactNode = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <CheckBoxOutlineIcon />
-    </div>
+    </ThemeProvider>
   );
 };

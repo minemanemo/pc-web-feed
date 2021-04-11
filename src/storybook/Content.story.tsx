@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { ThemeProvider } from 'styled-components';
 
 import ContentProfile from '@components/Content/Profile';
 import ContentImagePanel from '@components/Content/ImagePanel';
 import { ContentCard } from '@components/Content';
+import theme from '@styles/theme';
 
 export default {
   title: 'Content',
@@ -10,7 +12,7 @@ export default {
 
 export const Profile: React.ReactNode = () => {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <ContentProfile
         name="Wade Warren"
         url="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-"
@@ -27,7 +29,7 @@ export const Profile: React.ReactNode = () => {
         name="Kristin Watson"
         url="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-default_images-avatar.png/80/81"
       />
-    </div>
+    </ThemeProvider>
   );
 };
 
@@ -36,13 +38,13 @@ export const ImagePanel: React.ReactNode = () => {
 
   const handleClickScrab = (value: boolean) => setScrab(value);
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <ContentImagePanel
         url="https://image.ohou.se/image/central_crop/bucketplace-v2-development/uploads-cards-snapshots1547907139_Oc9.jpeg/640/640"
         scrab={scrab}
         onClickScrab={handleClickScrab}
       />
-    </div>
+    </ThemeProvider>
   );
 };
 
@@ -62,7 +64,7 @@ export const ContentCardExample: React.ReactNode = () => {
 
   const handleClickScrab = (value: boolean) => setScrab(value);
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <ContentCard
         nickname={resource.nickname}
         imageUrl={resource.image_url}
@@ -70,6 +72,6 @@ export const ContentCardExample: React.ReactNode = () => {
         scrab={scrab}
         onClickScrab={handleClickScrab}
       />
-    </div>
+    </ThemeProvider>
   );
 };

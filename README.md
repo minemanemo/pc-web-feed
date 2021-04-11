@@ -46,3 +46,4 @@
 - 상태 관리 라이브러리 사용 (redux, redux-saga)
 - TypeScript 사용
 - CSS in JS 사용 (styled-component)
+- Storybook 사용
