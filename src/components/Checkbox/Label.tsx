@@ -39,4 +39,6 @@ const Wrapper = styled.div`
 
 const Label = styled.span`
   cursor: pointer;
+  font-size: ${({ theme }) => theme.basicFontSize};
+  color: ${({ theme }) => theme.subFontColor};
 `;

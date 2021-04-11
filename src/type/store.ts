@@ -17,4 +17,8 @@ export interface Feeds {
   loading: boolean;
 }
 
-export type SetScrabAction = Action<{ id: number; value: boolean }>;
+export type SetScrabAction = Action<{
+  id: number;
+  value: boolean;
+  callback?: () => void;
+}>;

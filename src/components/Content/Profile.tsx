@@ -38,6 +38,8 @@ const Wrapper = styled.div`
 
 const Label = styled.span`
   font-weight: bold;
+  font-size: ${({ theme }) => theme.basicFontSize};
+  color: ${({ theme }) => theme.mainFontColor};
 `;
 
 const ProfileWrapper = styled.div`

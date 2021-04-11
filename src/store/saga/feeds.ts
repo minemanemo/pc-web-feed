@@ -45,9 +45,11 @@ function* loadScrab() {
 }
 
 function* setScrab(action: SetScrabAction) {
-  const { id, value } = action.payload;
+  const { id, value, callback } = action.payload;
   setFilter(id, value);
   yield loadScrab();
+
+  if (callback) callback();
 }
 
 export default function* guide() {

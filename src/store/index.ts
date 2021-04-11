@@ -13,7 +13,7 @@ const sagaMiddleware = createSagaMiddleware();
 const routerMiddleware = createRouterMiddleware(history);
 
 const getMiddleWare = () => {
-  return [routerMiddleware, sagaMiddleware, logger];
+  return [routerMiddleware, sagaMiddleware];
 };
 
 const store: Store = createStore(

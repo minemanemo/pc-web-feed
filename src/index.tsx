@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '@styles/global';
 import theme from '@styles/theme';
 import history from '@libs/history';
+import GlobalProvider from '@components/Global/Provider';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -15,12 +16,14 @@ import store from './store';
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-        <GlobalStyle />
-      </Provider>
+      <GlobalProvider>
+        <Provider store={store}>
+          <ConnectedRouter history={history}>
+            <App />
+          </ConnectedRouter>
+          <GlobalStyle />
+        </Provider>
+      </GlobalProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root'),
