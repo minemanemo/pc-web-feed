@@ -1,9 +1,9 @@
 import React from 'react';
 
-import MainRouter from '@router/MainRouter';
+import Feed from '@pages/Feed';
 
 const App: React.FC = () => {
-  return <MainRouter />;
+  return <Feed />;
 };
 
 export default App;

@@ -15,7 +15,6 @@ module.exports = {
       '@components': 'components',
       '@libs': 'libs',
       '@pages': 'pages',
-      '@router': 'router',
       '@store': 'store',
       '@styles': 'styles',
       '@type': 'type',

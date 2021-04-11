@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyle from '@styles/global';
 import theme from '@styles/theme';
-import history from '@libs/history';
 import GlobalProvider from '@components/Global/Provider';
 
 import App from './App';
@@ -18,9 +16,7 @@ ReactDOM.render(
     <ThemeProvider theme={theme}>
       <GlobalProvider>
         <Provider store={store}>
-          <ConnectedRouter history={history}>
-            <App />
-          </ConnectedRouter>
+          <App />
           <GlobalStyle />
         </Provider>
       </GlobalProvider>
