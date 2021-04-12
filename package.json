@@ -51,7 +51,15 @@
         "error",
         {
           "props": true,
-          "ignorePropertyModificationsFor": ["draft"]
+          "ignorePropertyModificationsFor": [
+            "draft"
+          ]
+        }
+      ],
+      "prettier/prettier": [
+        "error",
+        {
+          "endOfLine": "auto"
         }
       ],
       "import/prefer-default-export": 0,
